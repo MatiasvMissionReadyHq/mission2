@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Real State web site</title>
+</head>
+<body>
+    <!-- Header section-->
+    <header>
+        <h1 class="titlehead">Welcome to my website</h1>
+        <img class="photoStyle" src="img/img.png">
+    </header>
+    <!-- Header section-->
+    <!-- navegation section-->
+    <nav>
+        <a href="#" name="section-home" class="navBar">Home</a>
+        <a href="#" name="section-about" class="navBar">about us</a>
+        <a href="#" name="section-contact" class="navBar">Contact</a>
+        <a href="#" name="section-property" class="navBar">propertys</a>
+    </nav>
+    <!-- navegation section-->
+    <!-- sections start-->
+    <section id="section-property">
+        <h2 class="center">Property List</h1>
+        <form>
+            <input type="hidden" id="updateProperty" value="">
+            <input type="text" id="addressInput" placeholder="add an address" required> <br> <br> 
+            <input type="number" id="bedsInput" placeholder="how many beds" required><br><br> 
+            <input type="number" id="bathsInput" placeholder="how many baths" required><br><br> 
+            <input type="number" id="parkingInputs" placeholder="how many parkings" required><br><br> 
+            <textarea name="descriptionInputs" id="descriptionInputs" cols="30" rows="10"></textarea><br> <br> 
+            <button id="addPropertyBtn" onclick="addProperty(event)">add property</button>
+        </form> 
+        <div id="property-list-display">
+            
+        </div> 
+    </section>
+    <section id="section-home">
+        <h2>Welcome to Our Real Estate Journey</h2>
+        <p>At Tauranga Real Estate, we believe in turning dreams into addresses. As a premier real estate agency, we have been serving our community for over a decade with a commitment to integrity, professionalism, and unparalleled customer service.</p>
+        <p>Our team of experienced and dedicated real estate professionals is here to guide you through every step of your real estate journey. Whether you are buying, selling, or investing, we are dedicated to ensuring a seamless and rewarding experience for our clients.</p>
+        <p>Why choose Tauranga Real Estate?</p>
+        <ul>
+            <li><strong>Expertise:</strong> Our team consists of seasoned professionals with extensive knowledge of the local real estate market.</li>
+            <li><strong>Personalized Service:</strong> We understand that every client is unique, and we tailor our services to meet your specific needs.</li>
+            <li><strong>Integrity:</strong> Honesty and transparency are at the core of our business. You can trust us to always have your best interests in mind.</li>
+            <li><strong>Innovation:</strong> We leverage the latest technology and marketing strategies to ensure your property receives maximum exposure and value.</li>
+        </ul>
+
+        <p>At Tauranga Real Estate, we don't just sell houses; we build lasting relationships. Your satisfaction is our success, and we look forward to being your trusted partner in all your real estate endeavors.</p>
+    </section>
+    <section id="section-about">
+        <h2>From Vision to Reality</h2>
+        <p>Real Estate was founded in the heart of Tauranga in 1995 by visionary entrepreneur Juan Perez. With a deep passion for real estate and a vision to redefine the industry, John embarked on a journey to establish a company that would be synonymous with trust, transparency, and excellence.</p>
+
+        <p>The early years were marked by dedication and hard work. Real Estate started as a modest agency, focusing on providing personalized services to local residents. As the company gained recognition for its commitment to client satisfaction, it expanded its services to include property management, investment consulting, and commercial real estate transactions.</p>
+
+        <p>Over the decades, Real Estate has played a pivotal role in shaping the landscape of [City Name]. Our team of experienced real estate professionals has been instrumental in facilitating countless successful transactions, helping individuals and businesses find their perfect properties and investment opportunities.</p>
+
+        <p>Real Estate's success is not just measured in numbers but in the relationships built with clients, partners, and the community. Our commitment to integrity, innovation, and client-centric services has earned us a reputation as a trusted leader in the real estate industry.</p>
+
+        <p>As we reflect on our journey, we are proud of the milestones achieved and excited about the future. Real Estate remains dedicated to providing exceptional real estate solutions, guiding our clients through every step of their real estate endeavors.</p>
+
+        <p>Thank you for being part of our story. We look forward to many more years of helping you turn your real estate dreams into reality.</p>
+    </section>
+    <section id="section-contact" >
+        <h2 class="center">Contact with us</h2>
+        <p class="center">¿Do you have any question? get in contact.</p>
+        <form action="mailto:matiasv@missionreadyhq.com" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">E-mail address:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <!-- sections end-->
+    <!-- footer start-->
+    <footer>
+        &copy; 2023 Real State web site alright reserved
+    </footer>
+    <!-- footer end -->
+
+</body>
+<script>
+
+// listening when click on website
+window.onclick = e => {
+    //console.log(e.target.name);  // to get the element name 
+    var getSection = document.getElementsByTagName('section');
+    
+    function showAndHidden(elementSelected){
+        var sectionNumber = getSection.length;
+        for(i=0;i<sectionNumber;i++){
+            //console.log(elementSelected)
+            
+            if (typeof getSection[i] != 'undefined') {
+                //console.log(getSection[i].id+' '+elementSelected)
+                if(getSection[i].id==elementSelected.name){
+                    document.getElementById(getSection[i].id).style.display = "block";
+                }else {
+                    //alert(getSection[i])
+                    document.getElementById(getSection[i].id).style.display = "none";
+                }
+
+               
+            }
+        }    
+        
+     }
+    //  checkl click on navBar before call the fucntion
+    if(e.target.className=='navBar'){
+        showAndHidden(e.target);
+    }
+}
+
+
+let propertyArr = [];
+
+        const updateInput = document.getElementById("updateProperty");
+        const addressInput = document.getElementById("addressInput");
+        const bedsInput = document.getElementById("bedsInput");
+        const bathsInput = document.getElementById("bathsInput");
+        const parkingInputs = document.getElementById("parkingInputs");
+        const descriptionInputs = document.getElementById("descriptionInputs");
+        const propertyDisplay = document.getElementById("property-list-display");
+        
+        getArrayFromLocalStorage();
+        //function to save array propertly in local storage
+        function saveArray(){
+            localStorage.setItem("storageProperty", JSON.stringify(propertyArr));
+            //let someVarName = localStorage.getItem("storageProperty");
+        }
+        
+        //function to get array property from local storage
+        function getArrayFromLocalStorage(){
+            if(localStorage.getItem("storageProperty")!=null){
+                propertyArr = JSON.parse(localStorage.getItem("storageProperty"));
+                displayPropertys();
+            }
+        }
+
+        function addProperty(event) {
+            
+            event.preventDefault();
+
+            //if address inpuit is empty return false
+            if(addressInput.value==''){
+
+                return false;
+            }
+            //create the objects form the inputs values
+            const propertyToAdd = {
+                addressInput: addressInput.value,
+                bedsInput: bedsInput.value,
+                bathsInput: bathsInput.value,
+                parkingInputs: parkingInputs.value,
+                descriptionInputs: descriptionInputs.value
+            };
+
+            // ask if is update or a new item
+            if(updateInput.value!=''){
+                propertyArr[updateInput.value] =propertyToAdd;
+                updateInput.value='';
+                addPropertyBtn.innerText='add property';
+            }else{
+                //add a new property object to the array
+                 propertyArr.push(propertyToAdd);
+            }
+
+            //save array in local storage
+            saveArray();
+            //call clean inputs to reset the form
+            cleanInputs();
+            //call to display the property each time we create a new one
+            displayPropertys();
+        }
+
+        // function to clean up the inputs after is added 
+        function cleanInputs(){
+
+            addressInput.value = '';
+            bedsInput.value = '';
+            bathsInput.value = '';
+            parkingInputs.value = '';
+            descriptionInputs.value = '';
+        }
+
+        // function display propety 
+        function displayPropertys(){
+
+            
+
+            let html= '';
+            propertyArr.forEach((element, i)=>{
+  
+                //console.log(element.item.length)
+                // if(element.item.length>0 && element.quantity>0){
+                     //html+=`<li id='${i}'>${element.addressInput} <span onclick="deleteProperty(${i})">&#9746;</span><span onclick="updateProperty(${i})">&#9745;</span></li>`;
+                    
+                     html +=`<div class="propertyCard">
+                                <img src="img/img.png" alt="Denim Jeans" style="width:100%">
+                                <h3>${element.addressInput}</h1>
+                                <p class="propertyArds">${element.bedsInput} Beds / ${element.bedsInput} bathsInput / ${element.parkingInputs} Cars</p>
+                                <p>${element.descriptionInputs}.</p>
+                                <p><button onclick="updateProperty(${i})">Edit Property</button></p>
+                                <p><button onclick="deleteProperty(${i})" style="background-color=;background-color: #750000;">Delete property</button></p>
+                            </div>`;
+                 // }    
+            });
+
+            propertyDisplay.innerHTML=html;
+
+        }
+
+        // function delete propety
+        function deleteProperty(id){
+            if (confirm("Are you sure ypou want to delete this property")) {
+                propertyArr.splice(id,1);
+                displayPropertys();
+                saveArray();
+            }    
+        }
+
+        function updateProperty(id){
+
+            if(typeof(propertyArr[id])!=='undefined'){
+                console.log(propertyArr[id]);
+                addressInput.value = propertyArr[id].addressInput;
+                bedsInput.value = propertyArr[id].bedsInput;
+                bathsInput.value = propertyArr[id].bathsInput;
+                parkingInputs.value = propertyArr[id].parkingInputs;
+                descriptionInputs.value = propertyArr[id].descriptionInputs;
+                updateInput.value = id;
+                addPropertyBtn.innerText='Update property';
+
+            }
+           
+        }
+
+
+</script>
+</html>
+

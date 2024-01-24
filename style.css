@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+    font-family: tahoma;
+}
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* HEADER styling section end */
+header {
+    display:flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+    background-color: #4c9e9e;
+    color: #fff;
+    height: 150px;
+    text-align: center;
+    
+}
+
+.titlehead{
+    position:absolute;
+    z-index: 1;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.photoStyle{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media screen and (max-width:600px){
+    .navBar{
+        font-size: 12px;
+    }
+    .titlehead{
+        font-size: 25px;
+    }
+    h2{
+        font-size: 20px;
+    }
+}
+/* HEADER styling section end*/
+
+ /* Navegation style start*/
+nav {
+    background-color: rgb(1, 139, 139);
+    overflow: hidden;
+    font-weight: bold;
+    
+}
+
+nav a:hover {
+    background-color: #4c9e9e;
+    transition: 1.5s ease;
+}   
+
+nav a {
+    float: left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/* Navegation style end*/
+
+/* section style start */
+section {
+    width: 100%; 
+    padding: 20px;
+    background-color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s, transform 1.5s;
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+#section-contact{
+    display:none;
+}
+
+#section-property{
+    display:none;
+}
+
+#section-about{
+    display:none;
+}
+/* section style end */
+
+/* media query for li and p element */
+@media screen and (max-width:600px){
+    p, li{
+        font-size: 13px;
+    }
+}
+/* styling form start */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s, transform 1s;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+button {
+    background-color: rgb(1, 139, 139);
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4c9e9e;
+    transition: 1.5s ease;
+    
+}
+.center{
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+/* form media query  */
+@media screen and (max-width:600px){
+    label{
+        font-size: 12px;
+    }
+}
+ /* styling form end */
+ /* styling footer start */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* styling footer end */
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.propertyCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    padding: 30px;
+    height: 500px;
+}
+
+.propertyArds{
+    color: grey;
+    font-size: 16px;
+}
+
+.propertyCard button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.propertyCard button:hover {
+    opacity: 0.7;
+}
+
+#property-list-display{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
